@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { UserRole } from "../enums/user-role.enum";
 import { UserProps } from "../types/user.props";
@@ -22,6 +23,8 @@ export class User {
     role: UserRole;
 
     constructor(props: UserProps) { 
+        if(props && !props.id)
+            this.id = crypto.randomUUID()
         Object.assign(this, props);
     }
 }

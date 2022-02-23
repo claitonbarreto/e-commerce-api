@@ -12,6 +12,7 @@ export class BaseRespoitory<T> implements IRepository<T> {
     }
 
     async create(entity: T): Promise<T> {
+
         const query = getConnection()
             .createQueryBuilder()
             .insert()
@@ -19,6 +20,7 @@ export class BaseRespoitory<T> implements IRepository<T> {
             .values(entity)
 
         const insertResult = await query.execute()
+
 
         return await this.findById(insertResult.identifiers[0].id)
     }

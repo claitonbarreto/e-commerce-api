@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { ShoppingCartStatus } from "../enums/shopping-cart-status.enum";
 import { ShoppingCartProps } from "../types/shopping-cart.props";
 import { Customer } from "../../customer/domain/Customer.entity";
@@ -23,16 +23,17 @@ export class ShoppingCart {
     })
     status: ShoppingCartStatus
 
-    @OneToMany(() => Product, product => product.shoppingCart)
+    @ManyToMany(() => Product, product => product.shoppingCarts)
     products: Product[];
 
     @OneToOne(() => Customer, customer => customer.shoppingCart)
+    @JoinColumn()
     customer: Customer;
 
     constructor(
         props: ShoppingCartProps,
     ) {
-        if(!props.id)
+        if(props && !props.id)
             props.id = crypto.randomUUID();
         Object.assign(this, props);
     }

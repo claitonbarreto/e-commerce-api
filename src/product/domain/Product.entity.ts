@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
 import { ProductProps } from "../types/product.props";
 import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
 
@@ -22,8 +22,8 @@ export class Product {
     @Column()
     quantity: number;
 
-    @ManyToOne(() => ShoppingCart, ShoppingCart => ShoppingCart.products)
-    shoppingCart: ShoppingCart;
+    @ManyToMany(() => ShoppingCart, ShoppingCart => ShoppingCart.products)
+    shoppingCarts: ShoppingCart[];
     
     constructor(
         props: ProductProps,

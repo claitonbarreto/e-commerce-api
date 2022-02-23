@@ -1,9 +1,12 @@
-import { Column, Entity } from "typeorm";
+import crypto from 'crypto';
+import { Column, Entity, PrimaryColumn } from "typeorm";
 import { AdminUserProps } from "../types/admin-user.props";
-import { User } from "../../user/domain/User.entity";
 
 @Entity()
-export class AdminUser extends User {
+export class AdminUser {
+
+    @PrimaryColumn()
+    id: string;
     
     @Column()
     register: string;
@@ -11,10 +14,14 @@ export class AdminUser extends User {
     @Column()
     sector: string;
 
+    @Column()
+    password: string;
+
     constructor(
         props: AdminUserProps,
     ) {
-        super(props);
+        if(props && !props.id)
+            props.id = crypto.randomUUID();
         Object.assign(this, props);
     }
 }
