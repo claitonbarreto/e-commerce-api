@@ -2,8 +2,8 @@ import crypto from 'crypto';
 import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { ShoppingCartStatus } from "../enums/shopping-cart-status.enum";
 import { ShoppingCartProps } from "../types/shopping-cart.props";
-import { Customer } from "./Customer.entity";
-import { Product } from "./Product.entity";
+import { Customer } from "../../customer/domain/Customer.entity";
+import { Product } from "../../product/domain/Product.entity";
 
 @Entity()
 export class ShoppingCart {

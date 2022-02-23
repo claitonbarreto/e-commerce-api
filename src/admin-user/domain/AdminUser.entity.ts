@@ -1,6 +1,6 @@
 import { Column, Entity } from "typeorm";
 import { AdminUserProps } from "../types/admin-user.props";
-import { User } from "./User.entity";
+import { User } from "../../user/domain/User.entity";
 
 @Entity()
 export class AdminUser extends User {

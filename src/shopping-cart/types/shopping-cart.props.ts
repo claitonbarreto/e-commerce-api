@@ -1,5 +1,5 @@
-import { Customer } from "../entities/Customer.entity";
-import { Product } from "../entities/Product.entity";
+import { Customer } from "../../customer/domain/Customer.entity";
+import { Product } from "../../product/domain/Product.entity";
 import { ShoppingCartStatus } from "../enums/shopping-cart-status.enum";
 
 export type ShoppingCartProps = {

@@ -1,9 +1,9 @@
-import { Customer } from "../../domain/entities/Customer.entity";
-import { Product } from "../../domain/entities/Product.entity";
-import { ShoppingCart } from "../../domain/entities/ShoppingCart.entity";
-import { ShoppingCartStatus } from "../../domain/enums/shopping-cart-status.enum";
-import { CustomerApplication } from "../../interfaces/applications/customer-application.interface";
-import { ShoppingCartRepository } from "../../interfaces/repositories/shopping-cart-repository.interface";
+import { Customer } from "../domain/Customer.entity";
+import { Product } from "../../product/domain/Product.entity";
+import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
+import { ShoppingCartStatus } from "../../shopping-cart/enums/shopping-cart-status.enum";
+import { CustomerApplication } from "../interfaces/applications/customer-application.interface";
+import { ShoppingCartRepository } from "../../shopping-cart/interfaces/repository/shopping-cart-repository.interface";
 
 export class AddProductToCart implements Pick<CustomerApplication, 'addProductToCart'>{
     constructor(

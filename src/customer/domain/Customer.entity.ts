@@ -1,7 +1,7 @@
 import { Column, Entity, OneToOne } from "typeorm";
 import { Address, CustomerProps } from "../types/customer.props";
-import { ShoppingCart } from "./ShoppingCart.entity";
-import { User } from "./User.entity";
+import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
+import { User } from "../../user/domain/User.entity";
 
 
 @Entity()

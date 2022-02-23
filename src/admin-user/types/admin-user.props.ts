@@ -1,4 +1,4 @@
-import { UserProps } from "./user.props";
+import { UserProps } from "../../user/types/user.props";
 
 export type AdminUserProps = UserProps & {  
     register: string;
