@@ -34,7 +34,12 @@ export class BaseRespoitory<T> implements IRepository<T> {
         return await query.getOne() as T
     }
     async findAll(): Promise<T[]> {
-        throw new Error("Method not implemented.");
+        const query = getConnection()
+            .createQueryBuilder()
+            .select("entity")
+            .from(this.tableName, "entity")
+
+        return await query.getMany() as T[]
     }
     async update(entity: T): Promise<T> {
         throw new Error("Method not implemented.");

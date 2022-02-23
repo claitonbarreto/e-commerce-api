@@ -17,7 +17,7 @@ export class ValidateCustomerApplicationImpl {
                 message: "Unauthorized"
             });
         }
-        
+
         const token = rawToken.split(' ')[1]
 
         if (!token) {
@@ -35,6 +35,7 @@ export class ValidateCustomerApplicationImpl {
         }
 
         const customer = await this.customerRepository.findById(payload.id);
+        
         if(!customer) {
             return response.status(400).json({
                 message: "Invalid credentials"

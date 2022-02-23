@@ -6,8 +6,9 @@ const router = Router();
 
 router.post('/auth/customer', (request, response) => authController.authCustomer(request, response));
 
-router.use(validateCustomerApplication.validate);
+router.use((req,res,next) => validateCustomerApplication.validate(req,res,next));
 router.post('/customer', (request, response) => customerController.registerCustomer(request, response));
+router.get('/customer', (request, response) => customerController.list(request, response));
 
 export {
     router
