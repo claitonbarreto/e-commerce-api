@@ -1,0 +1,53 @@
+Usuario > Operador > Cliente
+Produto
+Carrinho de Compras
+
+# Entidades #
+
+Produto
+- Nome
+- Preço
+- Quantidade
+
+Usuario
+- Nome
+- Email
+- Senha
+- Role
+
+Operador : Usuario
+- Matricula
+- Setor
+
+Cliente : Usuario
+- CPF
+- Endereço
+- Telefone
+
+Carrinho de Compras
+- Produtos
+- Cliente
+- Total
+- Validade
+- Status
+
+# ACOES #
+
+Operador
+- Cadastrar Produto
+- Listar Produto
+- Alterar Produto
+- Excluir Produto
+- Cadastrar Cliente Ja ativo
+- Listar Cliente
+- Ativar Cliente
+
+Cliente
+- Listar Produto
+- Ver Carrinho de Compras
+- Adicionar Produto ao Carrinho de Compras
+- Remover Produto do Carrinho de Compras
+- Finalizar Compra
+- Se cadastrar
+
+

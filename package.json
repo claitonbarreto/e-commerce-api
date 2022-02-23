@@ -1,0 +1,27 @@
+{
+   "name": "base-api-solid",
+   "version": "1.0.0",
+   "main": "index.js",
+   "license": "MIT",
+   "scripts": {
+      "start": "ts-node src/index.ts",
+      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+      "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+   },
+   "dependencies": {
+      "express": "^4.17.3",
+      "mysql": "^2.14.1",
+      "mysql2": "^2.3.3",
+      "nodemailer": "^6.7.2",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.2.43"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.13",
+      "@types/node": "^16.11.10",
+      "@types/nodemailer": "^6.4.4",
+      "ts-node": "10.4.0",
+      "ts-node-dev": "^1.1.8",
+      "typescript": "4.5.2"
+   }
+}
