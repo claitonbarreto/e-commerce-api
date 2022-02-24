@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 import { CustomerRepository } from '../../customer/interfaces/repository/customer-repository.interface';
+import { User } from '../../user/domain/User';
+import { UserRole } from '../../user/enums/user-role.enum';
 
 export class ValidateCustomerApplicationImpl {
 
@@ -8,7 +10,7 @@ export class ValidateCustomerApplicationImpl {
         private customerRepository: CustomerRepository,
     ) {}
 
-    async validate(request:Request, response: Response, next: NextFunction): Promise<Response> {
+    async validate(request:Request&{user?: User}, response: Response, next: NextFunction): Promise<Response> {
 
         const rawToken = request.headers.authorization
 
@@ -41,6 +43,14 @@ export class ValidateCustomerApplicationImpl {
                 message: "Invalid credentials"
             });
         }
+
+        request.user = {
+            id: customer.id,
+            name: customer.name,
+            email: customer.email,
+            password: customer.password,
+            role: UserRole.Customer,
+        };
 
         next();
     }

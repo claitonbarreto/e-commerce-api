@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AuthenticatedRequest } from "../core/types/AuthenticatedRequest.type";
 import { UserRole } from "../user/enums/user-role.enum";
 import { Customer } from "./domain/Customer.entity";
 import { ListCustomersApplication } from "./interfaces/applications/list-customers-application.interface";
@@ -35,7 +36,7 @@ export class CustomerController {
         return response.status(200).json(customer);
     }
 
-    public async list(request: Request, response: Response): Promise<Response> {
+    public async list(request: AuthenticatedRequest, response: Response): Promise<Response> {
         try {
             const customers = await this.listCustomersApplication.listCustomers();
             return response.status(200).json(customers);

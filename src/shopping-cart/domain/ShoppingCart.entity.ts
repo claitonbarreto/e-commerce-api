@@ -1,9 +1,9 @@
 import crypto from 'crypto';
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { ShoppingCartStatus } from "../enums/shopping-cart-status.enum";
 import { ShoppingCartProps } from "../types/shopping-cart.props";
 import { Customer } from "../../customer/domain/Customer.entity";
-import { Product } from "../../product/domain/Product.entity";
+import { ShoppingCart_Product } from '../../shopping-cart_product/domain/ShoppingCart_Product.entity';
 
 @Entity()
 export class ShoppingCart {
@@ -11,7 +11,11 @@ export class ShoppingCart {
     @PrimaryColumn()
     id: string;
 
-    @Column()
+    @Column({
+        type: 'decimal',
+        precision: 10,
+        scale: 2,
+    })
     total: number;
 
     @Column()
@@ -23,12 +27,12 @@ export class ShoppingCart {
     })
     status: ShoppingCartStatus
 
-    @ManyToMany(() => Product, product => product.shoppingCarts)
-    products: Product[];
-
     @OneToOne(() => Customer, customer => customer.shoppingCart)
     @JoinColumn()
     customer: Customer;
+
+    @OneToMany(() => ShoppingCart_Product, shoppingCartProduct => shoppingCartProduct.shoppingCart)
+    shoppingCartProducts: ShoppingCart_Product[];
 
     constructor(
         props: ShoppingCartProps,

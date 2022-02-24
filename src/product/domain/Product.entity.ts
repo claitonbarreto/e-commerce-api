@@ -1,7 +1,8 @@
 import crypto from 'crypto';
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { ProductProps } from "../types/product.props";
 import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
+import { ShoppingCart_Product } from '../../shopping-cart_product/domain/ShoppingCart_Product.entity';
 
 
 @Entity()
@@ -23,8 +24,8 @@ export class Product {
     @Column()
     quantity: number;
 
-    @ManyToMany(() => ShoppingCart, ShoppingCart => ShoppingCart.products)
-    shoppingCarts: ShoppingCart[];
+    @OneToMany(() => ShoppingCart_Product, shoppingCartProducts => shoppingCartProducts.product)
+    shoppingCartProducts: ShoppingCart_Product[];
     
     constructor(
         props: ProductProps,

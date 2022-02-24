@@ -41,7 +41,15 @@ export class BaseRespoitory<T> implements IRepository<T> {
 
         return await query.getMany() as T[]
     }
-    async update(entity: T): Promise<T> {
-        throw new Error("Method not implemented.");
+    async update(entity: T&{id:string}): Promise<T> {
+        const query = getConnection()
+            .createQueryBuilder()
+            .update(this.tableName)
+            .set(entity)
+            .where("id = :id", { id: entity.id })
+
+        await query.execute()
+
+        return await this.findById(entity.id)
     }
 }
