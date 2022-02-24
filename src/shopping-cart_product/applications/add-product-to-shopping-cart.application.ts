@@ -3,7 +3,6 @@ import { ShoppingCart_Product } from "../domain/ShoppingCart_Product.entity";
 import { ShoppingCartRepository } from "../../shopping-cart/interfaces/repository/shopping-cart-repository.interface";
 import { AddProductToShoppingCart } from "../interfaces/applications/add-product-to-shopping-cart.application.interface";
 import { ShoppingCart_ProductRepository } from "../interfaces/repository/shopping-cart_product.repository.interface";
-import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
 
 export class AddProductToShoppingCartImpl implements AddProductToShoppingCart {
 
