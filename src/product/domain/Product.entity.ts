@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { Column, Entity, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
 import { ProductProps } from "../types/product.props";
 import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
@@ -28,6 +29,8 @@ export class Product {
     constructor(
         props: ProductProps,
     ) { 
+        if(props && !props.id)
+            props.id = crypto.randomUUID()
         Object.assign(this, props);
     }
 }
