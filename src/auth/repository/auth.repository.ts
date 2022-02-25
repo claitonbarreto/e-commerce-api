@@ -26,6 +26,6 @@ export class AuthRepositoryImpl implements AuthRepository {
     }
 
     async authAdmin(auth: Auth): Promise<AdminUser> {
-        throw new Error("Method not implemented.");
+        throw new Error(`Method not implemented. ${auth}`); 
     }
 }
