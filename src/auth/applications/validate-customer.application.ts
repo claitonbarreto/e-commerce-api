@@ -28,7 +28,7 @@ export class ValidateCustomerApplicationImpl {
             });
         }
         
-        const payload = jwt.decode(token) as any;
+        const payload = jwt.decode(token) as {id:string};
 
         if (!payload) {
             return response.status(401).json({
