@@ -1,14 +1,16 @@
 import { NextFunction, Response } from 'express';
-import jwt from 'jsonwebtoken';
 import { CustomerRepository } from '../../customer/interfaces/repository/customer-repository.interface';
 import { UserRole } from '../../user/enums/user-role.enum';
 import { AuthenticatedRequest } from '../../core/types/AuthenticatedRequest.type';
 import { ValidadeCustomerApplicationInterface } from '../interfaces/applications/validate-customer.application.interface';
+import { IDecodeTokenApplication } from '../../token/interfaces/applications/decode-token.application.interface';
+import { Customer } from '../../customer/domain/Customer.entity';
 
 export class ValidateCustomerApplicationImpl implements ValidadeCustomerApplicationInterface {
 
     constructor(
         private customerRepository: CustomerRepository,
+        private decodeTokenApplication: IDecodeTokenApplication
     ) {}
 
     async validate(request:AuthenticatedRequest, response: Response, next: NextFunction): Promise<Response> {
@@ -29,7 +31,7 @@ export class ValidateCustomerApplicationImpl implements ValidadeCustomerApplicat
             });
         }
         
-        const payload = jwt.decode(token) as {id:string};
+        const payload = await this.decodeTokenApplication.decodeToken<Customer>(token);
 
         if (!payload) {
             return response.status(401).json({
