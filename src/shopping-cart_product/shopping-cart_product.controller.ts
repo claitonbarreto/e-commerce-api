@@ -1,11 +1,10 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { AuthenticatedRequest } from "../core/types/AuthenticatedRequest.type";
 import { GetCustomerApplication } from "../customer/interfaces/applications/get-customer-application.interface";
 import { ShoppingCart } from "../shopping-cart/domain/ShoppingCart.entity";
 import { ShoppingCartStatus } from "../shopping-cart/enums/shopping-cart-status.enum";
 import { CreateShoppingCartApplication } from "../shopping-cart/interfaces/applications/create-shopping-cart.application.interface";
 import { GetShoppingCartApplication } from "../shopping-cart/interfaces/applications/get-shopping-cart.application.interface";
-import { ShoppingCartRepository } from "../shopping-cart/interfaces/repository/shopping-cart-repository.interface";
 import { AddProductToShoppingCart } from "./interfaces/applications/add-product-to-shopping-cart.application.interface";
 
 export class ShoppingCart_ProductController {

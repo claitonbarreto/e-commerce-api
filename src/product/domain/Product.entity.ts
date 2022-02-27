@@ -1,7 +1,6 @@
 import crypto from 'crypto';
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { ProductProps } from "../types/product.props";
-import { ShoppingCart } from "../../shopping-cart/domain/ShoppingCart.entity";
 import { ShoppingCart_Product } from '../../shopping-cart_product/domain/ShoppingCart_Product.entity';
 
 

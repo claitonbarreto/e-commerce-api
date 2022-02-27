@@ -1,4 +1,4 @@
-import { Entity, getConnection } from "typeorm";
+import { getConnection } from "typeorm";
 import { IRepository } from "../interfaces/IRepository";
 
 export class BaseRespoitory<T> implements IRepository<T> {

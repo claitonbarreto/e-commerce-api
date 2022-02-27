@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ListCustomersApplicationImpl } from "../customer/applications/list-customers.application";
 import { Product } from "./domain/Product.entity";
 import { CreateProductApplication } from "./interfaces/applications/create-product.application.interface";
 import { ListProductsApplication } from "./interfaces/applications/list-products.application.interface";

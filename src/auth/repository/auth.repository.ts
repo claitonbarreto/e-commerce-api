@@ -7,7 +7,6 @@ import { AuthRepository } from "../interfaces/repository/auth-repository.interfa
 export class AuthRepositoryImpl implements AuthRepository {
 
     constructor(
-        //private adminUserRepository: AdminUserRepository,
         private customerRepository: CustomerRepository,
     ) {}
 

@@ -1,4 +1,4 @@
-import { createQueryBuilder, getConnection } from "typeorm";
+import { createQueryBuilder } from "typeorm";
 import { BaseRespoitory } from "../../core/repositories/BaseRepository";
 import { ShoppingCart } from "../domain/ShoppingCart.entity";
 import { ShoppingCartRepository } from "../interfaces/repository/shopping-cart-repository.interface";

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, PrimaryColumn } from "typeorm";
 import { UserRole } from "../enums/user-role.enum";
 import { UserProps } from "../types/user.props";
 
