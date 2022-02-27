@@ -1,7 +1,23 @@
-# Awesome Project Build with TypeORM
+# E-Commerce Solid Api
 
-Steps to run this project:
+## A base api for a e-commerce
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+### Implements SOLID concepts
+
+## This api contains two user profiles: 'Admin User' and 'Customer'
+
+### Customer
+
+[x] List products <br>
+[x] Add product to a shopping cart <br>
+[ ] View shopping cart <br>
+[ ] Clear his shopping cart <br>
+[ ] Remove product from shopping cart <br>
+[ ] Purshcase a shopping cart <br>
+
+### Admin User
+
+[x] List products <br>
+[x] Create product <br>
+[ ] List customers <br>
+[ ] Active / Inactive customer <br>
