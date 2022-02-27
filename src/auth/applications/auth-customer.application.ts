@@ -11,6 +11,8 @@ export class AuthCustomerApplicationImpl implements AuthCustomerApplication {
     ) {}
 
     async authCustomer(auth: Auth): Promise<string> {
+
+        const { JWT_SECRET, JWT_SHELF_LIFE } = process.env
         
         const authenticated = await this.authRepository.authCustomer(auth);
         
@@ -23,7 +25,9 @@ export class AuthCustomerApplicationImpl implements AuthCustomerApplication {
         const token = jwt.sign({
             id: customer.id,
             name: customer.name,
-        }, process.env.JWT_SECRET)
+        }, JWT_SECRET, {
+            expiresIn: JWT_SHELF_LIFE,
+        })
 
         return token;
     }

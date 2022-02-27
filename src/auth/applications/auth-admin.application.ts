@@ -12,6 +12,9 @@ export class AuthAdminApplicationImpl implements AuthAdmin {
     ) {}
 
     public async authAdmin(auth: Auth): Promise<string> {   
+
+        const { JWT_SECRET, JWT_SHELF_LIFE } = process.env
+
         const authenticated = await this.authRepository.authAdmin(auth);
 
         if (!authenticated) {
@@ -23,8 +26,8 @@ export class AuthAdminApplicationImpl implements AuthAdmin {
         const token = jwt.sign({
             id: adminUser.id,
             name: adminUser.register,
-        }, process.env.JWT_SECRET, {
-            expiresIn: '1d',
+        }, JWT_SECRET, {
+            expiresIn: JWT_SHELF_LIFE,
         })
 
         return token;
