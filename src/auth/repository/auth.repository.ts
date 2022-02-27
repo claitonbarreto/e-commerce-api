@@ -1,4 +1,5 @@
 import { AdminUser } from "../../admin-user/domain/AdminUser.entity";
+import { AdminUserRepositoryInterface } from "../../admin-user/interfaces/admin-user.repository.interface";
 import { Customer } from "../../customer/domain/Customer.entity";
 import { CustomerRepository } from "../../customer/interfaces/repository/customer-repository.interface";
 import { Auth } from "../domain/Auth";
@@ -8,6 +9,7 @@ export class AuthRepositoryImpl implements AuthRepository {
 
     constructor(
         private customerRepository: CustomerRepository,
+        private adminUserRepository: AdminUserRepositoryInterface,
     ) {}
 
     async authCustomer(auth: Auth): Promise<Customer> {
@@ -25,6 +27,16 @@ export class AuthRepositoryImpl implements AuthRepository {
     }
 
     async authAdmin(auth: Auth): Promise<AdminUser> {
-        throw new Error(`Method not implemented. ${auth}`); 
+        const adminUser = await this.adminUserRepository.findByRegister(auth.register);
+
+        if (!adminUser) {
+            throw new Error("Invalid credentials");
+        }
+
+        if(adminUser.password !== auth.password) {
+            throw new Error("Invalid credentials");
+        }
+
+        return adminUser;
     }
 }

@@ -1,16 +1,17 @@
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { NextFunction, Request, Response } from 'express';
 import { CustomerRepository } from '../../customer/interfaces/repository/customer-repository.interface';
-import { User } from '../../user/domain/User';
 import { UserRole } from '../../user/enums/user-role.enum';
+import { AuthenticatedRequest } from '../../core/types/AuthenticatedRequest.type';
+import { ValidadeCustomerApplicationInterface } from '../interfaces/applications/validate-customer.application.interface';
 
-export class ValidateCustomerApplicationImpl {
+export class ValidateCustomerApplicationImpl implements ValidadeCustomerApplicationInterface {
 
     constructor(
         private customerRepository: CustomerRepository,
     ) {}
 
-    async validate(request:Request&{user?: User}, response: Response, next: NextFunction): Promise<Response> {
+    async validate(request:AuthenticatedRequest, response: Response, next: NextFunction): Promise<Response> {
 
         const rawToken = request.headers.authorization
 

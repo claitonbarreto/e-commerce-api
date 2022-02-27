@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { Column, Entity, PrimaryColumn } from "typeorm";
+import { UserRole } from '../../user/enums/user-role.enum';
 import { AdminUserProps } from "../types/admin-user.props";
 
 @Entity()
@@ -16,6 +17,12 @@ export class AdminUser {
 
     @Column()
     password: string;
+
+    @Column({
+        type: "enum",
+        enum: UserRole,
+    })
+    role: UserRole;
 
     constructor(
         props: AdminUserProps,

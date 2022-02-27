@@ -1,4 +1,5 @@
 export type AuthProps = {
-    email: string;
+    register?: string;
+    email?: string;
     password: string;
 }
