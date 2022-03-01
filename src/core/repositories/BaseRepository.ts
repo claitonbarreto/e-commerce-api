@@ -52,4 +52,14 @@ export class BaseRespoitory<T> implements IRepository<T> {
 
         return await this.findById(entity.id)
     }
+
+    async delete(id: string): Promise<void> {
+        const query = getConnection()
+            .createQueryBuilder()
+            .delete()
+            .from(this.tableName)
+            .where("id = :id", { id })
+
+        await query.execute()
+    }
 }

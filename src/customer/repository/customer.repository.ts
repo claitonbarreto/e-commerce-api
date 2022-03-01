@@ -1,4 +1,4 @@
-import { getConnection } from "typeorm";
+import { createQueryBuilder, getConnection } from "typeorm";
 import { BaseRespoitory } from "../../core/repositories/BaseRepository";
 import { Customer } from "../domain/Customer.entity";
 import { CustomerRepository } from "../interfaces/repository/customer-repository.interface";
@@ -15,6 +15,16 @@ implements CustomerRepository {
                     email
                 }
             });
+    }
+
+    async findByIdWithShoppingCart(id: string): Promise<Customer> {
+        const query =  createQueryBuilder(Customer, "customer")
+            .innerJoinAndSelect("customer.shoppingCart", "shoppingCart")
+            .where("customer.id = :id", { id })
+            
+        const customer = await query.getOne();
+
+        return customer;
     }
     
 }

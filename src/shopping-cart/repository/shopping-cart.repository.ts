@@ -10,6 +10,8 @@ implements ShoppingCartRepository {
 
         const query = createQueryBuilder(ShoppingCart, "shoppingCart")
             .innerJoinAndSelect("shoppingCart.customer", "customer")
+            .innerJoinAndSelect("shoppingCart.shoppingCartProducts", "products")
+            .innerJoinAndSelect("products.product", "product")
             .where("customer.id = :customerId", { customerId })
 
         return await query.getOne();

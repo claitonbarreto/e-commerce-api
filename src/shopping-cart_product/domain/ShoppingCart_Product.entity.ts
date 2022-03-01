@@ -19,10 +19,12 @@ export class ShoppingCart_Product {
     @Column()
     quantity: number;
     
-    @ManyToOne(() => Product, product => product.shoppingCartProducts)
+    @ManyToOne(() => Product , product => product.shoppingCartProducts)
     product: Product;
 
-    @ManyToOne(() => ShoppingCart, shoppingCart => shoppingCart.shoppingCartProducts)
+    @ManyToOne(() => ShoppingCart, shoppingCart => shoppingCart.shoppingCartProducts, {
+        onDelete: "CASCADE",
+    })
     shoppingCart: ShoppingCart;
 
     constructor(

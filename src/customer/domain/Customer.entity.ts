@@ -29,7 +29,9 @@ export class Customer {
     @Column()
     phone: string;
 
-    @OneToOne(() => ShoppingCart, shoppingCart => shoppingCart.customer)
+    @OneToOne(() => ShoppingCart, shoppingCart => shoppingCart.customer, {
+        onDelete: "SET NULL",
+    })
     @JoinColumn()
     shoppingCart: ShoppingCart;
 

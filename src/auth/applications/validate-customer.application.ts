@@ -31,7 +31,7 @@ export class ValidateCustomerApplicationImpl implements ValidadeCustomerApplicat
             });
         }
         
-        const payload = await this.decodeTokenApplication.decodeToken<Customer>(token);
+        const payload = this.decodeTokenApplication.decodeToken<{auth:Customer}>(token).auth;
 
         if (!payload) {
             return response.status(401).json({
