@@ -16,6 +16,7 @@ router.post('/customer', (request, response) => customerController.registerCusto
 router.get('/customer', (request, response) => customerController.list(request, response));
 router.get('/customer/:customerId/shopping-cart', (request, response) => shoppingCartController.getShoppingCart(request, response));
 router.delete('/customer/:customerId/shopping-cart', (request, response) => shoppingCartController.deleteShoppingCart(request, response));
+router.delete('/customer/:customerId/shopping-cart/:productId', (request, response) => shoppingCartController.deleteProductFromShoppingCart(request, response));
 
 router.use((req,res,next) => validateAdminUserApplication.validate(req,res,next));
 router.post('/products', (request, response) => productsController.createProduct(request, response));

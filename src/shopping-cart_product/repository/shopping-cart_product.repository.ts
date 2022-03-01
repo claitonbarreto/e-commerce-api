@@ -46,13 +46,13 @@ implements ShoppingCart_ProductRepository {
         return shoppingCart_Product
     }
 
-    async updateShoppingCart_Product(shoppingCartId: string, productId: string, quantity: number): Promise<void> {
+    async updateShoppingCart_Product(shoppingCartProduct: ShoppingCart_Product): Promise<void> {
+
         const query = getConnection()
             .createQueryBuilder()
             .update(ShoppingCart_Product)
-            .set({ quantity })
-            .where('shoppingCartId = :shoppingCartId', { shoppingCartId })
-            .andWhere('productId = :productId', { productId })
+            .set(shoppingCartProduct)
+            .where('id = :id', {id: shoppingCartProduct.id})
 
         await query.execute()
     }

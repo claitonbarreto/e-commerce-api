@@ -24,7 +24,7 @@ export class AddProductToShoppingCartImpl implements AddProductToShoppingCart {
 
         if (shoppingCartProduct) {
             shoppingCartProduct.quantity += quantity
-            await this.shoppingCart_productRepository.updateShoppingCart_Product(shoppingCartId, productId, quantity)
+            await this.shoppingCart_productRepository.updateShoppingCart_Product(shoppingCartProduct)
         } else {
             shoppingCartProduct = await this.shoppingCart_productRepository.addProductToShoppingCart(shoppingCart, product, quantity)
         }

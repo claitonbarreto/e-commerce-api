@@ -11,7 +11,7 @@
 - [x] List products <br>
 - [x] Add product to a shopping cart <br>
 - [x] View shopping cart <br>
-- [ ] Clear his shopping cart <br>
+- [x] Clear his shopping cart <br>
 - [ ] Remove product from shopping cart <br>
 - [ ] Purshcase a shopping cart <br>
 
